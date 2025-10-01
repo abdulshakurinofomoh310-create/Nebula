@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Nebula Tech — Music Studio Visualizer (Integrated Package)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { margin:0; font-family:system-ui,Segoe UI,Roboto,Arial; background:#05060a; color:#e6f0ff; }
+    .topbar { display:flex; gap:10px; padding:10px; align-items:center; background:linear-gradient(90deg,#071021,#0b1726); box-shadow:0 6px 18px rgba(0,0,0,0.6);}
+    .btn { padding:8px 12px; border-radius:8px; border:0; cursor:pointer; background:#0b2b4a; color:#cfefff;}
+    .controls { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    #command { width:220px; padding:8px 10px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); background:transparent; color:#e6f0ff; }
+    .sl { width:160px; }
+    #status { margin-left:12px; color:#9fc9df; font-size:13px;}
+    #canvasWrap { position:relative; height:calc(100vh - 84px); overflow:hidden; }
+    canvas { display:block; width:100%; height:100%; }
+    .panel { position:absolute; right:16px; top:16px; background:rgba(0,0,0,0.45); padding:12px; border-radius:10px; width:320px; color:#dbeeff }
+    label { font-size:13px; color:#9fc9df; display:block; margin-bottom:6px; }
+    .row { display:flex; gap:8px; align-items:center; margin-bottom:8px; }
+    footer { position:fixed; bottom:8px; left:8px; color:rgba(255,255,255,0.6); font-size:13px }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div style="font-weight:700; font-size:18px">Nebula Tech — Music Studio Visualizer (Integrated)</div>
+    <div style="flex:1"></div>
+    <div class="controls">
+      <button id="recordBtn" class="btn">● Record</button>
+      <button id="stopRecBtn" class="btn">■ Stop</button>
+      <label class="btn">Upload beat<input id="file" type="file" accept="audio/*" style="display:none"></label>
+      <button id="playRecBtn" class="btn">▶ Play</button>
+      <input id="command" placeholder="Type command (upgrade / regenerate)" />
+    </div>
+    <div id="status">Ready</div>
+  </div>
+
+  <div id="canvasWrap">
+    <canvas id="galaxyCanvas"></canvas>
+
+    <div class="panel">
+      <div style="font-weight:700; margin-bottom:8px">Studio Controls</div>
+
+      <label>Gain</label>
+      <input id="gain" type="range" min="0" max="2" step="0.01" value="1" class="sl"/>
+
+      <label>Lowpass (Hz)</label>
+      <input id="low" type="range" min="200" max="12000" step="1" value="12000" class="sl"/>
+
+      <label>Highpass (Hz)</label>
+      <input id="high" type="range" min="10" max="1200" step="1" value="10" class="sl"/>
+
+      <label>Delay (ms)</label>
+      <input id="delay" type="range" min="0" max="800" step="1" value="0" class="sl"/>
+
+      <label>Distortion (0-1)</label>
+      <input id="dist" type="range" min="0" max="1" step="0.01" value="0" class="sl"/>
+
+      <label>Playback pitch (0.5 - 2)</label>
+      <input id="pitch" type="range" min="0.5" max="2" step="0.01" value="1" class="sl"/>
+
+      <div style="margin-top:10px">
+        <button id="regenBtn" class="btn">AI Regenerate</button>
+        <button id="uploadDemo" class="btn">Play Demo Track</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>Created by Abdulshakuri • WhatsApp: +2347044618291</footer>
+
+  <script type="module" src="studio_app.js"></script>
+</body>
+</html>
